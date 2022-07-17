@@ -24,6 +24,8 @@ Nonfunctional Requirements:
 
 ## 2. Architecture overview diagram (AOD) and design description
 
+![AOD](/AOD.png)
+
 The system is composed of clients, a central server, file servers, metadata storage, and file storage.
 A client can signup, login, upload/edit/delete/view files.
 For the server side, we need a central server for client interaction and authentication, one metadata storage to store structured data, such as file size and path, and some file server and storage for upload, editing, deleting, and searching file data.
