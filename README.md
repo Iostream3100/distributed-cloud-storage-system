@@ -7,7 +7,7 @@
 
 Our team will design a distributed storage system like Google Drive or Dropbox with a terminal client interface. Feature expectations are listed below:
 
-Functional Requirements:
+### Functional Requirements:
 - Users should be able to signup and log in;
 - Users can interact with the system through terminals;
 - The system should support different users with different files;
@@ -16,7 +16,7 @@ Functional Requirements:
 - Users can download files;
 - Files should be synchronized in all nodes in the distributed system;
 
-Nonfunctional Requirements:
+### Nonfunctional Requirements:
 - Performance: Service should handle hundreds of users at the same time.
 - Availability: Service needs to be highly available;
 - Reliability: Data should be replicated to tolerate server failure.
