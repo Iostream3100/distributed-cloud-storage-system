@@ -13,6 +13,8 @@ public interface StorageService {
 
 	void store(MultipartFile file);
 
+	void createDirectoryByPath(String dirPath);
+
 	Stream<Path> loadAll();
 
 	Stream<Path> loadAllByPath(String rootPath) throws NoSuchFileException;

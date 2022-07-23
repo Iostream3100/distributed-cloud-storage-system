@@ -48,6 +48,17 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
+    public void createDirectoryByPath(String dirPath) {
+        try {
+            Path path = this.rootLocation.resolve(dirPath);
+            Files.createDirectories(path);
+        } catch (IOException e) {
+            throw new StorageException("Failed to create directory.", e);
+        }
+
+    }
+
+    @Override
     public Stream<Path> loadAll() {
         try {
             return Files.walk(this.rootLocation, 1)
