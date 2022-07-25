@@ -1,15 +1,13 @@
 package client;
 
-//import org.apache.hc.client5.http.fluent.Form;
-//import org.apache.hc.client5.http.fluent.Request;
-
 import org.apache.hc.core5.net.URIBuilder;
 import org.apache.http.client.fluent.Content;
-import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +17,8 @@ public class Client {
 
     public static String url = "http://127.0.0.1:8080";
     private String userName = "Yun";
-    private String currentDirectory = "/";
+
+    private Path currentDirectory = Paths.get("/");
     private boolean running = true;
 
     public static void main(final String... args) throws Exception {
@@ -57,27 +56,23 @@ public class Client {
                     running = false;
                     break;
                 case "ls":
-                    String path = cmdArr.length > 1 ? cmdArr[1] : currentDirectory;
-                    System.out.println(getFilesByPath(path));
+                    Path path = cmdArr.length > 1 ? Paths.get("/") : currentDirectory;
+                    System.out.println(getFilesByPath(path.toString()));
                     break;
                 case "cd":
-                    String newPath = cmdArr[1];
+                    String newPathStr = cmdArr[1];
 
                     try {
-                        String absolutePath = "";
+                        Path absolutePath;
                         if (cmdArr[1].startsWith("/")) {
-                            absolutePath = newPath;
+                            absolutePath = Paths.get(newPathStr);
                         } else {
-                            if (currentDirectory.equals("/")) {
-                                absolutePath = currentDirectory + newPath;
-                            } else {
-                                absolutePath += currentDirectory + "/" + newPath;
-                            }
+                            absolutePath = currentDirectory.resolve(newPathStr);
                         }
-                        getFilesByPath(absolutePath);
-                        currentDirectory = absolutePath;
+                        getFilesByPath(absolutePath.toString());
+                        currentDirectory = absolutePath.normalize();
                     } catch (Exception e) {
-                        System.out.println(String.format("cd: The directory '%s' does not exist", newPath));
+                        System.out.printf("cd: The directory '%s' does not exist%n", newPathStr);
                     }
 
                     break;
@@ -100,7 +95,7 @@ public class Client {
             Content content = Request.Get(builder.build())
                     .execute()
                     .returnContent();
-            List<String> files = new ArrayList<>(Arrays.asList(content.toString()));
+            System.out.println(content);
             return content.toString();
 
         } catch (URISyntaxException e) {
