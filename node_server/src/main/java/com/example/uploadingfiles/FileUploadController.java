@@ -49,7 +49,7 @@ public class FileUploadController {
      */
     @GetMapping("/dirs")
     @ResponseBody
-    public List<String> getDirectoriesByPath(@RequestParam(value = "path", defaultValue = "") String path) {
+    public List<String> getDirectoriesByPath(@RequestParam(value = "path", defaultValue = "/") String path) {
         try {
             Stream<Path> pathStream = storageService.loadAllByPath(path);
             return pathStream.map(Path::toString).collect(Collectors.toList());

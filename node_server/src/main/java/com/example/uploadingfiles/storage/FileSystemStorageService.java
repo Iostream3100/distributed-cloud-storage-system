@@ -72,7 +72,11 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public Stream<Path> loadAllByPath(String rootPath) throws NoSuchFileException {
         try {
-            Path dirPath = this.rootLocation.resolve(rootPath);
+            if (!rootPath.startsWith("/") ) {
+                throw new StorageException("Path should start with /");
+            }
+            Path dirPath = this.rootLocation.resolve(rootPath.substring(1));
+            System.out.println(dirPath.normalize());
             return Files.walk(dirPath, 1)
                     .filter(path -> !path.equals(dirPath))
                     .map(dirPath::relativize);
