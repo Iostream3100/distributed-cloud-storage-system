@@ -9,20 +9,25 @@ import java.util.stream.Stream;
 
 public interface StorageService {
 
-	void init();
+    void init();
 
-	void store(MultipartFile file);
+    void store(MultipartFile file);
 
-	void createDirectoryByPath(String dirPath);
+    void store(String path, MultipartFile file);
 
-	Stream<Path> loadAll();
+    void createDirectoryByPath(String dirPath);
 
-	Stream<Path> loadAllByPath(String rootPath) throws NoSuchFileException;
+    void deleteDirectoryByPath(String dirPath);
 
-	Path load(String filename);
 
-	Resource loadAsResource(String filename);
+    Stream<Path> loadAll();
 
-	void deleteAll();
+    Stream<Path> loadAllByPath(String rootPath) throws NoSuchFileException;
+
+    Path load(String filename);
+
+    Resource loadAsResource(String filename);
+
+    void deleteAll();
 
 }

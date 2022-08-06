@@ -5,6 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a75193a7-6abf-4d2f-b53e-5b394de802cb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/CS6650-distributed-cloud-storage-system.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/target/classes/client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/client/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" afterDir="false" />
@@ -13,10 +18,18 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/FileUploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/FileUploadController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/storage/FileSystemStorageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/storage/FileSystemStorageService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/storage/StorageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/storage/StorageService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/FileUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/FileUploadController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/FileSystemStorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/FileSystemStorageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/StorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/StorageService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,27 +70,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/yunfeng/Desktop/CS6650-distributed-cloud-storage-system/node_server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yunfeng/Desktop/CS6650-distributed-cloud-storage-system/node_server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;648fb0e80eca1d2db1199e7323b42c0f&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -89,13 +103,6 @@
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="demo" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UploadingFilesApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="uploading-files" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.uploadingfiles.UploadingFilesApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,7 +123,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658530783044</updated>
-      <workItem from="1658530784306" duration="31393000" />
+      <workItem from="1658530784306" duration="34700000" />
+      <workItem from="1659670729277" duration="419000" />
+      <workItem from="1659671158803" duration="23464000" />
+      <workItem from="1659763429395" duration="39000" />
+      <workItem from="1659763537387" duration="477000" />
     </task>
     <servers />
   </component>

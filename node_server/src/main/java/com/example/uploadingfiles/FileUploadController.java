@@ -1,19 +1,14 @@
 package com.example.uploadingfiles;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.json.JsonWriteFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.example.uploadingfiles.storage.StorageException;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -59,18 +54,35 @@ public class FileUploadController {
         }
     }
 
-    @RequestMapping(value = "dirs",
-            method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    /**
+     * create a directory by path
+     *
+     * @param path path of the new directory
+     * @return response
+     */
+    @PostMapping("/dirs")
     @ResponseBody
-    public ResponseEntity createDirectoryByPath(@RequestBody JsonNode requestBody) {
-        String path = requestBody.get("path").toString();
-        path = path.substring(1, path.length() - 1);
+    public ResponseEntity createDirectoryByPath(@RequestParam(value = "path") String path) {
         storageService.createDirectoryByPath(path);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Directory Created");
     }
+
+
+    /**
+     * delete a directory by path
+     *
+     * @param path path of the directory
+     * @return response
+     */
+    @DeleteMapping("/dirs")
+    @ResponseBody
+    public ResponseEntity deleteDirectoryByPath(@RequestParam(value = "path") String path) {
+        storageService.deleteDirectoryByPath(path);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("Directory Deleted");
+    }
+
 
     @GetMapping("/")
     public String listUploadedFiles(Model model) {
@@ -98,6 +110,7 @@ public class FileUploadController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
+
     @GetMapping("/files")
     @ResponseBody
     public ResponseEntity<Resource> getFileByPath(@RequestParam(value = "path") String path) {
@@ -106,13 +119,12 @@ public class FileUploadController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
-    @PostMapping("/")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
-
+    @PostMapping("/files")
+    public String handleFileUpload(@RequestParam MultipartFile file ,
+                                   @RequestParam String path) {
         storageService.store(file);
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
+//        redirectAttributes.addFlashAttribute("message",
+//                "You successfully uploaded " + file.getOriginalFilename() + "!");
 
         return "redirect:/";
     }
@@ -122,4 +134,10 @@ public class FileUploadController {
         return ResponseEntity.notFound().build();
     }
 
+    @ExceptionHandler(StorageException.class)
+    public ResponseEntity<?> handleStorageFileNotFound(StorageException exc) {
+        return new ResponseEntity<Object>(
+                exc.getMessage(), new HttpHeaders(), HttpStatus.FORBIDDEN);
+
+    }
 }
