@@ -53,17 +53,18 @@ public class FileSystemStorageService implements StorageService {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file.");
             }
-            Path destinationFile = this.rootLocation
-                    .resolve(path)
-                    .resolve(Paths.get(Objects.requireNonNull(file.getOriginalFilename())))
+
+
+            Path folderPath = load(path)
                     .normalize()
                     .toAbsolutePath();
 
-            if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
-                // This is a security check
-                throw new StorageException(
-                        "Cannot store file outside current directory.");
+            if(!Files.exists(folderPath)) {
+                throw new StorageException("Folder doesn't exist");
             }
+
+            Path destinationFile = folderPath.resolve(Paths.get(Objects.requireNonNull(file.getOriginalFilename())));
+
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, destinationFile,
                         StandardCopyOption.REPLACE_EXISTING);
@@ -112,7 +113,7 @@ public class FileSystemStorageService implements StorageService {
             if (!rootPath.startsWith("/")) {
                 throw new StorageException("Path should start with /");
             }
-//            Path dirPath = this.rootLocation.resolve(rootPath.substring(1));
+
             Path dirPath = load(rootPath);
 
             if (!Files.isDirectory(dirPath)) {
@@ -128,13 +129,26 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
+    /**
+     * get the path of an entry on disk,
+     * if the entry is not a sub entry of the root location, return root location.
+     *
+     * @param entryName name of the entry
+     * @return path on disk
+     */
     @Override
     public Path load(String entryName) {
         if (entryName.startsWith("/")) {
             entryName = entryName.substring(1);
         }
 
-        return rootLocation.resolve(entryName);
+        Path entryPath = rootLocation.resolve(entryName).normalize();
+
+        // check if the path is outside the root folder
+        if (!entryPath.startsWith(rootLocation)) {
+            entryPath = rootLocation;
+        }
+        return entryPath;
     }
 
     @Override

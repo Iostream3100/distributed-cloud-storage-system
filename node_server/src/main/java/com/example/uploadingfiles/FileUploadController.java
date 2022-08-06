@@ -21,10 +21,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.uploadingfiles.storage.StorageFileNotFoundException;
 import com.example.uploadingfiles.storage.StorageService;
+
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class FileUploadController {
@@ -119,14 +120,17 @@ public class FileUploadController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
-    @PostMapping("/files")
-    public String handleFileUpload(@RequestParam MultipartFile file ,
-                                   @RequestParam String path) {
-        storageService.store(file);
+    @RequestMapping(path = "/files", method = POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+
+    public ResponseEntity handleFileUpload(
+            @RequestBody MultipartFile file,
+            @RequestParam("path") String path) {
+
+        storageService.store(path, file);
 //        redirectAttributes.addFlashAttribute("message",
 //                "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-        return "redirect:/";
+        return ResponseEntity.status(HttpStatus.CREATED).body("File uploaded");
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)
