@@ -50,6 +50,7 @@ public class Client {
     }
 
     void handleCommand(String cmd) throws IOException {
+
         try {
             String[] cmdArr = cmd.split(" ");
 

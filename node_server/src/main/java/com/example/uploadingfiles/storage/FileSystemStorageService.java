@@ -1,18 +1,18 @@
 package com.example.uploadingfiles.storage;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.nio.file.*;
-import java.util.Objects;
-import java.util.stream.Stream;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.nio.file.*;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @Service
 public class FileSystemStorageService implements StorageService {
@@ -102,16 +102,6 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
-    @Override
-    public Stream<Path> loadAll() {
-        try {
-            return Files.walk(this.rootLocation, 1)
-                    .filter(path -> !path.equals(this.rootLocation))
-                    .map(this.rootLocation::relativize);
-        } catch (IOException e) {
-            throw new StorageException("Failed to read stored files", e);
-        }
-    }
 
     @Override
     public Stream<Path> loadAllByPath(String rootPath) throws NoSuchFileException {
@@ -135,13 +125,7 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
-    /**
-     * get the path of an entry on disk,
-     * if the entry is not a sub entry of the root location, return root location.
-     *
-     * @param entryName name of the entry
-     * @return path on disk
-     */
+
     @Override
     public Path load(String entryName) {
         if (entryName.startsWith("/")) {
@@ -158,9 +142,9 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public Resource loadAsResource(String filename) {
+    public Resource loadAsResource(String filePath) {
         try {
-            Path file = load(filename);
+            Path file = load(filePath);
 
             if (Files.isDirectory(file)) {
                 throw new StorageException("Cannot download a folder");
@@ -170,11 +154,11 @@ public class FileSystemStorageService implements StorageService {
                 return resource;
             } else {
                 throw new StorageFileNotFoundException(
-                        "Could not read file: " + filename);
+                        "Could not read file: " + filePath);
 
             }
         } catch (MalformedURLException e) {
-            throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+            throw new StorageFileNotFoundException("Could not read file: " + filePath, e);
         }
     }
 

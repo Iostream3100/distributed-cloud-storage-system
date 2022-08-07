@@ -1,14 +1,8 @@
 package com.example.uploadingfiles;
 
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import com.example.uploadingfiles.storage.StorageException;
-
-
+import com.example.uploadingfiles.storage.StorageFileNotFoundException;
+import com.example.uploadingfiles.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -16,14 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
-import com.example.uploadingfiles.storage.StorageFileNotFoundException;
-import com.example.uploadingfiles.storage.StorageService;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -45,10 +39,12 @@ public class FileUploadController {
      */
     @GetMapping("/dirs")
     @ResponseBody
-    public List<String> getDirectoriesByPath(@RequestParam(value = "path", defaultValue = "/") String path) {
+    public ResponseEntity<?> getDirectoriesByPath(@RequestParam(value = "path", defaultValue = "/") String path) {
         try {
             Stream<Path> pathStream = storageService.loadAllByPath(path);
-            return pathStream.map(Path::toString).collect(Collectors.toList());
+            String dirs = String.join(" ", pathStream.map(Path::toString).collect(Collectors.toList()));
+
+            return ResponseEntity.ok(dirs);
         } catch (NoSuchFileException exc) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Invalid path, directory not found", exc);
@@ -84,24 +80,12 @@ public class FileUploadController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Directory Deleted");
     }
 
-
-    @GetMapping("/")
-    public String listUploadedFiles(Model model) {
-        Stream<Path> pathStream = storageService.loadAll();
-        pathStream.forEach(path -> {
-            System.out.println(path.toString());
-
-        });
-        model.addAttribute("filestest", storageService.loadAll().map(
-                        path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
-                                "serveFile", path.getFileName().toString()).build().toUri().toString())
-                .collect(Collectors.toList()));
-
-        return "uploadForm";
-    }
-
-
-
+    /**
+     * get a file by path
+     *
+     * @param path path of the file
+     * @return file
+     */
     @GetMapping("/files")
     @ResponseBody
     public ResponseEntity<Resource> getFileByPath(@RequestParam(value = "path") String path) {
@@ -110,6 +94,13 @@ public class FileUploadController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
+    /**
+     * upload a file in a multipart form
+     *
+     * @param file file to upload
+     * @param path path of the file
+     * @return response
+     */
     @RequestMapping(path = "/files", method = POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<?> handleFileUpload(@RequestBody MultipartFile file, @RequestParam("path") String path) {
         storageService.store(path, file);
