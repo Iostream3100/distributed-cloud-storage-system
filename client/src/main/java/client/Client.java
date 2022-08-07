@@ -1,55 +1,37 @@
 package client;
 
-import org.apache.hc.client5.http.async.methods.SimpleHttpResponse;
+import org.apache.commons.io.IOUtils;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.mime.FileBody;
-import org.apache.hc.client5.http.entity.mime.HttpMultipartMode;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
-import org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient;
-import org.apache.hc.client5.http.impl.async.HttpAsyncClients;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.core5.http.HttpResponse;
+import org.apache.hc.core5.http.ClassicHttpResponse;
+import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.net.URIBuilder;
-import org.apache.http.Consts;
-import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.client.fluent.Content;
-import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
-import
-        org.apache.hc.core5.http.HttpEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
 
-
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Client {
 
-    public static String url = "http://127.0.0.1:8080";
-    private String userName = "Yun";
+    public static final String url = "http://127.0.0.1:8080";
+    private static final String userName = "Yun";
 
     private Path currentDirectory = Paths.get("/");
     private boolean running = true;
 
     public static void main(final String... args) throws Exception {
-        // The fluent API relieves the user from having to deal with manual
-        // deallocation of system resources at the cost of having to buffer
-        // response content in memory in some cases.
-
         new Client();
-//        System.out.println(Request.Get(url + "/dirs").execute().returnContent());
-//        Request.Post("http://targethost/login")
-//                .bodyForm(Form.form().add("username",  "vip").add("password",  "secret").build())
-//                .execute().returnContent();
     }
 
 
@@ -125,7 +107,6 @@ public class Client {
                     .execute()
                     .returnContent();
             return content.toString();
-
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -146,8 +127,12 @@ public class Client {
         HttpEntity entity = builder.build();
         httppost.setEntity(entity);
 
-        HttpResponse response = httpclient.execute(httppost);
+        ClassicHttpResponse response = (ClassicHttpResponse) httpclient.execute(httppost);
 
+        InputStream inputStream = response.getEntity().getContent();
+        String result = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+
+        System.out.println(result);
     }
 
     void downloadFileByPath(Path filePath) throws IOException {
@@ -165,6 +150,7 @@ public class Client {
             Request.Get(builder.build())
                     .execute()
                     .saveContent(file);
+
             System.out.println("File downloaded to folder: " + downloadFolderPath.toAbsolutePath());
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);

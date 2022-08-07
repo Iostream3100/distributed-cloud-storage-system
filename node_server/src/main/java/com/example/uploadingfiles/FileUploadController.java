@@ -121,15 +121,8 @@ public class FileUploadController {
     }
 
     @RequestMapping(path = "/files", method = POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-
-    public ResponseEntity handleFileUpload(
-            @RequestBody MultipartFile file,
-            @RequestParam("path") String path) {
-
-        System.out.println(file.getName() + "--" + file.getOriginalFilename() + " <> " + file.getContentType() + " <> " + file.getSize());
+    public ResponseEntity<?> handleFileUpload(@RequestBody MultipartFile file, @RequestParam("path") String path) {
         storageService.store(path, file);
-//        redirectAttributes.addFlashAttribute("message",
-//                "You successfully uploaded " + file.getOriginalFilename() + "!");
 
         return ResponseEntity.status(HttpStatus.CREATED).body("File uploaded");
     }
