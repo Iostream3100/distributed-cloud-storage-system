@@ -19,6 +19,7 @@ public interface StorageService {
 
     void deleteDirectoryByPath(String dirPath);
 
+    void deleteFileByPath(String filePath);
 
     Stream<Path> loadAll();
 

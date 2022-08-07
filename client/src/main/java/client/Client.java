@@ -30,7 +30,7 @@ public class Client {
     private Path currentDirectory = Paths.get("/");
     private boolean running = true;
 
-    public static void main(final String... args) throws Exception {
+    public static void main(final String... args) {
         new Client();
     }
 
@@ -78,7 +78,11 @@ public class Client {
                     break;
                 case "rmdir":
                     String dirToDelete = cmdArr[1];
-                    deleteDirByPath(getAbsolutePath(dirToDelete));
+                    deleteEntryByPath(true, getAbsolutePath(dirToDelete));
+                    break;
+                case "rm":
+                    String fileToDelete = cmdArr[1];
+                    deleteEntryByPath(false, getAbsolutePath(fileToDelete));
                     break;
                 case "pwd":
                     System.out.println(currentDirectory);
@@ -170,9 +174,9 @@ public class Client {
         }
     }
 
-    void deleteDirByPath(Path path) {
+    void deleteEntryByPath(boolean isDirectory, Path path) {
         try {
-            URIBuilder builder = new URIBuilder(url + "/dirs");
+            URIBuilder builder = new URIBuilder(url + (isDirectory ? "/dirs" : "/files"));
             builder.addParameter("path", path.toString());
 
             Request.Delete(builder.build())
@@ -182,6 +186,7 @@ public class Client {
             throw new RuntimeException(e);
         }
     }
+
 
     Path getAbsolutePath(String pathStr) {
         if (pathStr.startsWith("/")) {

@@ -59,7 +59,7 @@ public class FileSystemStorageService implements StorageService {
                     .normalize()
                     .toAbsolutePath();
 
-            if(!Files.exists(folderPath)) {
+            if (!Files.exists(folderPath)) {
                 throw new StorageException("Folder doesn't exist");
             }
 
@@ -89,11 +89,17 @@ public class FileSystemStorageService implements StorageService {
     public void deleteDirectoryByPath(String dirPath) {
         try {
             Path path = load(dirPath);
+
+            if (!Files.exists(path)) {
+                throw new StorageException("Directory doesn't exist.");
+            }
+            if (!Files.isDirectory(path)) {
+                throw new StorageException(dirPath + " is not a directory");
+            }
             Files.deleteIfExists(path);
         } catch (IOException e) {
-            throw new StorageException("Failed to create directory.", e);
+            throw new StorageException("Failed to delete directory.", e);
         }
-
     }
 
     @Override
@@ -169,6 +175,22 @@ public class FileSystemStorageService implements StorageService {
             }
         } catch (MalformedURLException e) {
             throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+        }
+    }
+
+    @Override
+    public void deleteFileByPath(String filePath) {
+        try {
+            Path path = load(filePath);
+            if (!Files.exists(path)) {
+                throw new StorageException("File doesn't exist.");
+            }
+            if (Files.isDirectory(path)) {
+                throw new StorageException(filePath + " is not a file");
+            }
+            Files.deleteIfExists(path);
+        } catch (IOException e) {
+            throw new StorageException("Failed to delete directory.", e);
         }
     }
 

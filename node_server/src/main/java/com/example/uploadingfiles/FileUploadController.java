@@ -38,7 +38,7 @@ public class FileUploadController {
     }
 
     /**
-     * get all the files and directories under of a directory
+     * get all the files and directories under a directory
      *
      * @param path path of the directory
      * @return A List of String with the name of paths and directories
@@ -78,7 +78,7 @@ public class FileUploadController {
      */
     @DeleteMapping("/dirs")
     @ResponseBody
-    public ResponseEntity deleteDirectoryByPath(@RequestParam(value = "path") String path) {
+    public ResponseEntity<?> deleteDirectoryByPath(@RequestParam(value = "path") String path) {
         storageService.deleteDirectoryByPath(path);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Directory Deleted");
@@ -87,7 +87,6 @@ public class FileUploadController {
 
     @GetMapping("/")
     public String listUploadedFiles(Model model) {
-
         Stream<Path> pathStream = storageService.loadAll();
         pathStream.forEach(path -> {
             System.out.println(path.toString());
@@ -101,15 +100,6 @@ public class FileUploadController {
         return "uploadForm";
     }
 
-
-    @GetMapping("/filestest/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
-        Resource file = storageService.loadAsResource(filename);
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
-    }
 
 
     @GetMapping("/files")
@@ -125,6 +115,21 @@ public class FileUploadController {
         storageService.store(path, file);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("File uploaded");
+    }
+
+
+    /**
+     * delete a file by path
+     *
+     * @param path path of the file
+     * @return response
+     */
+    @DeleteMapping("/files")
+    @ResponseBody
+    public ResponseEntity<?> deleteFileByPath(@RequestParam(value = "path") String path) {
+        storageService.deleteFileByPath(path);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("Directory Deleted");
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)
