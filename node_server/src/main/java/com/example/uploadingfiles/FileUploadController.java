@@ -126,6 +126,7 @@ public class FileUploadController {
             @RequestBody MultipartFile file,
             @RequestParam("path") String path) {
 
+        System.out.println(file.getName() + "--" + file.getOriginalFilename() + " <> " + file.getContentType() + " <> " + file.getSize());
         storageService.store(path, file);
 //        redirectAttributes.addFlashAttribute("message",
 //                "You successfully uploaded " + file.getOriginalFilename() + "!");

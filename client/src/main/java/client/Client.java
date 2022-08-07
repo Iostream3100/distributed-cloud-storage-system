@@ -1,29 +1,27 @@
 package client;
 
+import org.apache.hc.client5.http.async.methods.SimpleHttpResponse;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.mime.FileBody;
 import org.apache.hc.client5.http.entity.mime.HttpMultipartMode;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
+import org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient;
+import org.apache.hc.client5.http.impl.async.HttpAsyncClients;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.HttpResponse;
 import org.apache.hc.core5.net.URIBuilder;
 import org.apache.http.Consts;
+import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.client.fluent.Content;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.BufferedImageHttpMessageConverter;
-import org.springframework.http.converter.FormHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-//import org.apache.hc.core5.http.HttpEntity;
+import
+        org.apache.hc.core5.http.HttpEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
+
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -135,76 +133,21 @@ public class Client {
 
     void uploadFileByPath(Path filePath) throws IOException, URISyntaxException {
         URIBuilder uriBuilder = new URIBuilder(url + "/files");
+        uriBuilder.addParameter("path", currentDirectory.toString());
 
         File file = new File(filePath.toString());
-//        uriBuilder.addParameter("path", currentDirectory.resolve(filePath.getFileName()).toString());
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        HttpClient httpclient = HttpClients.createDefault();
 
+        HttpPost httppost = new HttpPost(uriBuilder.build());
+        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+        builder.addPart("file", new FileBody(file));
 
-        MultiValueMap<String, Object> body
-                = new LinkedMultiValueMap<>();
-        body.add("file", file);
+        HttpEntity entity = builder.build();
+        httppost.setEntity(entity);
 
-        HttpEntity<MultiValueMap<String, Object>> requestEntity
-                = new HttpEntity<>(body, headers);
+        HttpResponse response = httpclient.execute(httppost);
 
-        String serverUrl = uriBuilder.build().toString();
-
-
-        System.out.println(file.getName());
-//        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new FormHttpMessageConverter());
-//        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.getMessageConverters().add(new BufferedImageHttpMessageConverter());
-
-        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
-        restTemplate.getMessageConverters().add(converter);
-
-
-        ResponseEntity<String> response = restTemplate
-                . postForEntity(serverUrl, requestEntity, String.class);
-//
-//        HttpEntity entity =  MultipartEntityBuilder.create()
-//                .setMode(HttpMultipartMode.EXTENDED)
-//                .addPart("file", new FileBody(file))
-//                .build();
-//
-//        Request.Post(uriBuilder.build()).body(entity)
-//                .bodyFile(file, ContentType.MULTIPART_FORM_DATA)
-//                .execute();
-//
-//        HttpPost httpPost = new HttpPost(uriBuilder.build());
-//
-//        ContentType plainAsciiContentType = ContentType.create("text/plain", Consts.ASCII);
-//
-////        httpPost.setEntity(entity);
-//
-//        CloseableHttpResponse response = httpclient.execute(httpPost);
-
-
-
-//        CloseableHttpClient httpClient = HttpClients.createDefault();
-//        HttpPost uploadFile = new HttpPost(uriBuilder.build());
-//        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-//        builder.addTextBody("field1", "yes", ContentType.TEXT_PLAIN);
-//
-//        // This attaches the file to the POST:
-//        builder.addBinaryBody(
-//                "file",
-//                new FileInputStream(file),
-//                ContentType.APPLICATION_OCTET_STREAM,
-//                file.getName()
-//        );
-//
-//        HttpEntity multipart = builder.build();
-//        uploadFile.setEntity(multipart);
-//        CloseableHttpResponse response = httpClient.execute(uploadFile);
-//        HttpEntity responseEntity = response.getEntity();
     }
 
     void downloadFileByPath(Path filePath) throws IOException {
