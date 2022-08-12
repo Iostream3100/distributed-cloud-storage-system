@@ -98,3 +98,8 @@ We will be using a fault-tolerant two-phase commit to make sure all replicated f
 
 ## 6. Expected Results
 The distributed system will use Mutual Exclusion, PAXOS, Group Communication, and Fault tolerance to implement a cloud file storage service.
+
+## 7. How to run?
+Run `docker-compose up --build ` to start all services.
+
+Run Client.java with your IDE.
