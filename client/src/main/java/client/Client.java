@@ -24,7 +24,9 @@ import java.util.Scanner;
 
 public class Client {
 
+//    public static final String url = "http://127.0.0.1:8810";
     public static final String url = "http://127.0.0.1:8080";
+
     private static final String userName = "Yun";
 
     private Path currentDirectory = Paths.get("/");
@@ -50,7 +52,6 @@ public class Client {
     }
 
     void handleCommand(String cmd) throws IOException {
-
         try {
             String[] cmdArr = cmd.split(" ");
 
@@ -99,8 +100,9 @@ public class Client {
             }
         } catch (ArrayIndexOutOfBoundsException | URISyntaxException e) {
             System.out.println("Error: Invalid Command" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
-
     }
 
     String getFilesByPath(Path path) throws IOException {
