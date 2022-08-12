@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  file-node-server:
+    build:
+      context: ./node_server
+      dockerfile: ./Dockerfile
+    command: java -jar ./target/FileNodeServer.jar
+    ports:
+      - 8080:8080
+
+networks:
+  default:
+    name: file-network
