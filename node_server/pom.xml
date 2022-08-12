@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>uploading-files-complete</artifactId>
+	<artifactId>cloud-storage-node-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>uploading-files-complete</name>
+	<name>cloud-storage-node-server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -40,6 +40,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<outputDirectory>./</outputDirectory>
+				</configuration>
 			</plugin>
 		</plugins>
 		<finalName>FileNodeServer</finalName>

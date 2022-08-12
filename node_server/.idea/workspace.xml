@@ -5,29 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a75193a7-6abf-4d2f-b53e-5b394de802cb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../central_server/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../central_server/src/main/java/com/example/centralServer/CentralServerApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/src/main/java/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/main/java/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/target/classes/client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/../client/target/classes/client/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/FileUploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/FileUploadController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/UploadingFilesApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/UploadingFilesApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/storage/FileSystemStorageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/storage/FileSystemStorageService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/storage/StorageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/uploadingfiles/storage/StorageService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/uploadForm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/FileUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/FileUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/UploadingFilesApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/UploadingFilesApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/FileSystemStorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/FileSystemStorageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/StorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/StorageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/uploadForm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/uploadingfiles/FileUploadIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/uploadingfiles/FileUploadIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/uploadingfiles/FileUploadTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/uploadingfiles/FileUploadIntegrationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/uploadingfiles/storage/FileSystemStorageServiceTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,10 +91,21 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UploadingFilesApplication">
+  <component name="RunManager" selected="JAR Application.cloud-storage-node-server-0.0.1-SNAPSHOT.jar">
+    <configuration name="cloud-storage-node-server-0.0.1-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/cloud-storage-node-server-0.0.1-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="demo" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UploadingFilesApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="node_server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.uploadingfiles.UploadingFilesApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -112,6 +117,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.cloud-storage-node-server-0.0.1-SNAPSHOT.jar" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -125,7 +135,13 @@
       <workItem from="1659670729277" duration="419000" />
       <workItem from="1659671158803" duration="23464000" />
       <workItem from="1659763429395" duration="39000" />
-      <workItem from="1659763537387" duration="21569000" />
+      <workItem from="1659763537387" duration="22409000" />
+      <workItem from="1659916929324" duration="25000" />
+      <workItem from="1659916964869" duration="6000" />
+      <workItem from="1659917011870" duration="4000" />
+      <workItem from="1660034015008" duration="3505000" />
+      <workItem from="1660176092242" duration="3120000" />
+      <workItem from="1660180208940" duration="15330000" />
     </task>
     <servers />
   </component>
@@ -146,15 +162,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/FileSystemStorageService.java</url>
-          <line>50</line>
-          <properties class="com.example.uploadingfiles.storage.FileSystemStorageService" method="store">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/FileSystemStorageService.java</url>
           <line>129</line>

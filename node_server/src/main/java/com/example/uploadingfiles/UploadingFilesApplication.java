@@ -8,12 +8,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Collections;
+
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
 public class UploadingFilesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UploadingFilesApplication.class, args);
+//		SpringApplication.run(UploadingFilesApplication.class, args);
+		SpringApplication app = new SpringApplication(UploadingFilesApplication.class);
+		app.setDefaultProperties(Collections.singletonMap("server.port", Integer.parseInt(args[0])));
+		app.run(args);
 	}
 
 	@Bean
