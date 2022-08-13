@@ -1,13 +1,49 @@
 version: '3.7'
 
 services:
-  file-node-server:
+  file-node-server-1:
     build:
       context: ./node_server
       dockerfile: ./Dockerfile
-    command: java -jar ./target/FileNodeServer.jar
+    image: file-node-server
+    command: java -jar ./target/FileNodeServer.jar 8080
+    expose:
+      - 8080
+  
+  file-node-server-2:
+    image: file-node-server
+    command: java -jar ./target/FileNodeServer.jar 8080
+    expose:
+      - 8080
+  
+  file-node-server-3:
+    image: file-node-server
+    command: java -jar ./target/FileNodeServer.jar 8080
+    expose:
+      - 8080
+  
+  file-node-server-4:
+    image: file-node-server
+    command: java -jar ./target/FileNodeServer.jar 8080
+    expose:
+      - 8080
+  
+  file-node-server-5:
+    image: file-node-server
+    command: java -jar ./target/FileNodeServer.jar 8080
+    expose:
+      - 8080
+  
+  central-server:
+    build:
+      context: ./central_server
+      dockerfile: ./Dockerfile
+    command: java -jar ./target/CentralServer.jar 8080
     ports:
       - 8080:8080
+    env_file:
+      - ./central_server/.env
+  
 
 networks:
   default:
