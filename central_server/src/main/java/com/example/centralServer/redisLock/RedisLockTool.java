@@ -1,23 +1,19 @@
-package com.example.centralServer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.script.DefaultRedisScript;
-import org.springframework.integration.redis.util.RedisLockRegistry;
-import org.springframework.web.bind.annotation.GetMapping;
+package com.example.centralServer.redisLock;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-public class Lock {
-    @Resource
-    private RedisLockRegistry redisLockRegistry;
-    @Autowired
-    StringRedisTemplate redisTemplate;
+@Component
+public class RedisLockTool{
+	@Autowired
+    RedisTemplate<Object,Object> redisTemplate;
 
-    @GetMapping("/lock")
     public boolean getLock(String lockKey, String identity, long expireTime) {
         try {
             boolean lockResult = redisTemplate.opsForValue().setIfAbsent(lockKey, identity, expireTime, TimeUnit.SECONDS);
@@ -28,7 +24,6 @@ public class Lock {
         return false;
     }
 
-    @GetMapping("/lock")
     public Object unlock(String lockKey, String identity) {
         String luaScript = "if " +
                 "  redis.call('get', KEYS[1]) == ARGV[1] " +

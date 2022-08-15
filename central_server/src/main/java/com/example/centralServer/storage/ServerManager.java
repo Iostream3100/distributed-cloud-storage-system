@@ -1,9 +1,9 @@
-package com.example.centralServer.storage;
-
-public interface ServerManager {
-    String getNextAvailableServerUrl();
-
-    String[] getAllServerUrl();
-
-    int getNumberOfServers();
-}
+//package com.example.centralServer.storage;
+//
+//public interface ServerManager {
+//    String getNextAvailableServerUrl();
+//
+//    String[] getAllServerUrl();
+//
+//    int getNumberOfServers();
+//}
