@@ -9,30 +9,40 @@ services:
     command: java -jar ./target/FileNodeServer.jar 8080
     expose:
       - 8080
+    env_file:
+      - ./node_server/.env
   
   file-node-server-2:
     image: file-node-server
     command: java -jar ./target/FileNodeServer.jar 8080
     expose:
       - 8080
+    env_file:
+      - ./node_server/.env
   
   file-node-server-3:
     image: file-node-server
     command: java -jar ./target/FileNodeServer.jar 8080
     expose:
       - 8080
+    env_file:
+      - ./node_server/.env
   
   file-node-server-4:
     image: file-node-server
     command: java -jar ./target/FileNodeServer.jar 8080
     expose:
       - 8080
+    env_file:
+      - ./node_server/.env
   
   file-node-server-5:
     image: file-node-server
     command: java -jar ./target/FileNodeServer.jar 8080
     expose:
       - 8080
+    env_file:
+      - ./node_server/.env
   
   central-server:
     build:
