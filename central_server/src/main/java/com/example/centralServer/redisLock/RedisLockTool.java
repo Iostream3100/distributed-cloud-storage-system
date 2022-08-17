@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisLockTool{
 	@Autowired
-    RedisTemplate<Object,Object> redisTemplate;
+    RedisTemplate redisTemplate;
 
     public boolean getLock(String lockKey, String identity, long expireTime) {
         try {
