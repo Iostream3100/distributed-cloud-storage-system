@@ -14,7 +14,9 @@ public class RedisLockTool{
 	@Autowired
     RedisTemplate redisTemplate;
 
-    public boolean getLock(String lockKey, String identity, long expireTime) {
+    
+	
+	public boolean getLock(String lockKey, String identity, long expireTime) {
         try {
             boolean lockResult = redisTemplate.opsForValue().setIfAbsent(lockKey, identity, expireTime, TimeUnit.SECONDS);
             return lockResult;
