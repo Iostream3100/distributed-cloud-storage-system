@@ -46,10 +46,14 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
+        <option name="alwaysUpdateSnapshots" value="true" />
         <option name="mavenHome" value="Use Maven wrapper" />
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="11" />
   </component>
   <component name="ProjectId" id="2CJpwooD13MBvbqFc13d4hLJLV0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -78,7 +82,12 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+<<<<<<< HEAD
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
+    "spring.configuration.checksum": "648fb0e80eca1d2db1199e7323b42c0f"
+=======
     "spring.configuration.checksum": "d963f328e10a8d4419ad6c21dedbfeaa"
+>>>>>>> a6078d28108c4a90ff471136508c63f0a1d8b8ac
   }
 }]]></component>
   <component name="RunDashboard">
@@ -146,7 +155,11 @@
       <workItem from="1660034015008" duration="3505000" />
       <workItem from="1660176092242" duration="3120000" />
       <workItem from="1660180208940" duration="15330000" />
+<<<<<<< HEAD
+      <workItem from="1660539123805" duration="543000" />
+=======
       <workItem from="1660541922740" duration="10696000" />
+>>>>>>> a6078d28108c4a90ff471136508c63f0a1d8b8ac
     </task>
     <servers />
   </component>
