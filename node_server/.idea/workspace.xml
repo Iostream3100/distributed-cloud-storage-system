@@ -5,26 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a75193a7-6abf-4d2f-b53e-5b394de802cb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../central_server/src/main/java/com/example/centralServer/RedisLockConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.gradle/7.4.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../central_server/.gradle/7.4.2/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.gradle/7.4.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../central_server/.gradle/7.4.2/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.gradle/7.4.2/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../central_server/.gradle/7.4.2/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../central_server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../central_server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../central_server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../central_server/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/mode/Mode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/transaction/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/transaction/TransactionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/FileUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/FileUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +82,12 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+<<<<<<< HEAD
     "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
     "spring.configuration.checksum": "648fb0e80eca1d2db1199e7323b42c0f"
+=======
+    "spring.configuration.checksum": "d963f328e10a8d4419ad6c21dedbfeaa"
+>>>>>>> a6078d28108c4a90ff471136508c63f0a1d8b8ac
   }
 }]]></component>
   <component name="RunDashboard">
@@ -113,6 +111,13 @@
     </configuration>
     <configuration name="UploadingFilesApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="node_server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.uploadingfiles.UploadingFilesApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UploadingFilesApplication (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="uploading-files" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.uploadingfiles.UploadingFilesApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -150,7 +155,11 @@
       <workItem from="1660034015008" duration="3505000" />
       <workItem from="1660176092242" duration="3120000" />
       <workItem from="1660180208940" duration="15330000" />
+<<<<<<< HEAD
       <workItem from="1660539123805" duration="543000" />
+=======
+      <workItem from="1660541922740" duration="10696000" />
+>>>>>>> a6078d28108c4a90ff471136508c63f0a1d8b8ac
     </task>
     <servers />
   </component>
@@ -167,20 +176,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/uploadingfiles/storage/FileSystemStorageService.java</url>
-          <line>129</line>
-          <properties class="com.example.uploadingfiles.storage.FileSystemStorageService" method="load">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

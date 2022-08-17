@@ -5,22 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a75193a7-6abf-4d2f-b53e-5b394de802cb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/centralServer/redisLock/LockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/centralServer/redisLock/LockController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/centralServer/redisLock/RedisLockConfig.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../node_server/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../node_server/src/main/java/com/example/uploadingfiles/mode/Mode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../node_server/src/main/java/com/example/uploadingfiles/transaction/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../node_server/src/main/java/com/example/uploadingfiles/transaction/TransactionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../node_server/.gradle/7.4.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../node_server/.gradle/7.4.2/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../node_server/.gradle/7.4.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../node_server/.gradle/7.4.2/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../node_server/.gradle/7.4.2/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../node_server/.gradle/7.4.2/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_server/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../node_server/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../node_server/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../node_server/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../node_server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../node_server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../node_server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../node_server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../node_server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../node_server/src/main/java/com/example/uploadingfiles/FileUploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../node_server/src/main/java/com/example/uploadingfiles/FileUploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../node_server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../node_server/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,18 +85,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/CS2/CS6650/CS6650-distributed-cloud-storage-system/central_server/pom.xml&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;1cbf0b2297b4dadbaf27533ef64e439c&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/CS2/CS6650/CS6650-distributed-cloud-storage-system/node_server/pom.xml",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "spring.configuration.checksum": "1cbf0b2297b4dadbaf27533ef64e439c"
   }
-}</component>
+}]]></component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -208,6 +207,7 @@
       <workItem from="1660541687766" duration="73000" />
       <workItem from="1660548644224" duration="112000" />
       <workItem from="1660694075320" duration="420000" />
+      <workItem from="1660696060024" duration="307000" />
     </task>
     <servers />
   </component>
