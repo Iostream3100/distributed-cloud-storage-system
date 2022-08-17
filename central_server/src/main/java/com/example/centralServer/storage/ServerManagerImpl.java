@@ -11,8 +11,6 @@ public class ServerManagerImpl implements ServerManager {
     private String[] nodeServerUrls;
     private int availableServerIndex = 0;
 
-    private static boolean TEST_MODE = true;
-
     @Autowired
     public ServerManagerImpl() {
 
@@ -21,9 +19,6 @@ public class ServerManagerImpl implements ServerManager {
 
     @Override
     public String getNextAvailableServerUrl() {
-        if (TEST_MODE) {
-            return nodeServerUrls[0];
-        }
         availableServerIndex %= nodeServerUrls.length;
         return nodeServerUrls[availableServerIndex++];
     }
