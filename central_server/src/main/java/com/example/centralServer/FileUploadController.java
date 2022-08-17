@@ -42,8 +42,9 @@ public class FileUploadController {
     @GetMapping("/dirs")
     @ResponseBody
     public ResponseEntity<?> getDirectoriesByPath(@RequestParam(value = "path", defaultValue = "/") String path) {
+    	//lock
     	String lockKey = path;
-    	String identity = "getLock";
+    	String identity = "getDirLock";
     	boolean lockSuccess = lockManager.getLock(lockKey, identity, 60);
     	
     	if (lockSuccess) {
@@ -82,18 +83,18 @@ public class FileUploadController {
     @DeleteMapping("/dirs")
     @ResponseBody
     public void deleteDirectoryByPath(@RequestParam(value = "path") String path) {
-        //lock
+    	//lock
     	String lockKey = path;
-    	String identity = "deltetLock";
+    	String identity = "deleteDirLock";
     	boolean lockSuccess = lockManager.getLock(lockKey, identity, 60);
-    	 
+    	
     	if (lockSuccess) {
     	String url = serverManager.getNextAvailableServerUrl();
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(url + "/dirs?path=" + path);
-        //release lock
+      //release lock
         boolean releaseSuccess = (boolean) lockManager.unlock(lockKey, identity);
-    	 }
+    	}
     }
 
     /**
@@ -105,9 +106,21 @@ public class FileUploadController {
     @GetMapping("/files")
     @ResponseBody
     public ResponseEntity<Resource> getFileByPath(@RequestParam(value = "path") String path) {
-        String url = serverManager.getNextAvailableServerUrl();
+    	  //lock
+    	String lockKey = path;
+    	String identity = "getFileLock";
+    	boolean lockSuccess = lockManager.getLock(lockKey, identity, 60);
+    	if (lockSuccess) {
+    	String url = serverManager.getNextAvailableServerUrl();
         RestTemplate restTemplate = new RestTemplate();
+        
+      //release lock
+        boolean releaseSuccess = (boolean) lockManager.unlock(lockKey, identity);
+        
         return restTemplate.getForEntity(url + "/files?path=" + path, Resource.class);
+    	 }else {
+     		return ResponseEntity.status(HttpStatus.CONFLICT).body("File is bing modified");
+    	 }
     }
 
     /**
@@ -118,7 +131,13 @@ public class FileUploadController {
      */
     @RequestMapping(path = "/files", method = POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<?> handleFileUpload(@RequestBody MultipartFile file, @RequestParam("path") String path) throws IOException {
-        MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
+    	  //lock
+    	String lockKey = path;
+    	String identity = "uploadFileLock";
+    	boolean lockSuccess = lockManager.getLock(lockKey, identity, 60);
+    	if (lockSuccess) {
+    	
+    	MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
         map.add("file", file.getResource());
 
         HttpHeaders headers = new HttpHeaders();
@@ -130,7 +149,13 @@ public class FileUploadController {
         RestTemplate restTemplate = new RestTemplate();
 
         String result = restTemplate.postForObject(url + "/files?path=" + path, requestEntity, String.class);
+      //release lock
+        boolean releaseSuccess = (boolean) lockManager.unlock(lockKey, identity);
+        
         return ResponseEntity.ok(result);
+    	}else {
+     		return ResponseEntity.status(HttpStatus.CONFLICT).body("Directory is bing modified");
+    	}
     }
 
 
@@ -142,9 +167,17 @@ public class FileUploadController {
     @DeleteMapping("/files")
     @ResponseBody
     public void deleteFileByPath(@RequestParam(value = "path") String path) {
+    	 //lock
+    	String lockKey = path;
+    	String identity = "deltetFileLock";
+    	boolean lockSuccess = lockManager.getLock(lockKey, identity, 60);
+    	if (lockSuccess) {
         String url = serverManager.getNextAvailableServerUrl();
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(url + "/files?path=" + path);
+        //release lock
+        boolean releaseSuccess = (boolean) lockManager.unlock(lockKey, identity);
+    	}
     }
 
 }
