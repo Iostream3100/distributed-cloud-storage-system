@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+//lock
+import com.example.centralServer.redisLock.RedisLockTool;
 
 import java.io.IOException;
 
@@ -22,10 +25,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 public class FileUploadController {
     ServerManager serverManager;
+    RedisLockTool lockManager;
 
     @Autowired
     public FileUploadController(ServerManager serverManager) {
         this.serverManager = serverManager;
+//        this.lockManager = new RedisLockTool();
     }
 
     /**
@@ -37,10 +42,20 @@ public class FileUploadController {
     @GetMapping("/dirs")
     @ResponseBody
     public ResponseEntity<?> getDirectoriesByPath(@RequestParam(value = "path", defaultValue = "/") String path) {
-        String url = serverManager.getNextAvailableServerUrl();
+    	String lockKey = path;
+    	String identity = "getLock";
+    	boolean lockSuccess = lockManager.getLock(lockKey, identity, 60);
+    	
+    	if (lockSuccess) {
+    	String url = serverManager.getNextAvailableServerUrl();
         RestTemplate restTemplate = new RestTemplate();
+        
+        //release lock
+        boolean releaseSuccess = (boolean) lockManager.unlock(lockKey, identity);
         return restTemplate.getForEntity(url + "/dirs?path=" + path, String.class);
-
+    	}else {
+    		return ResponseEntity.status(HttpStatus.CONFLICT).body("Directory is bing modified");
+    	}
     }
 
     /**
@@ -67,9 +82,18 @@ public class FileUploadController {
     @DeleteMapping("/dirs")
     @ResponseBody
     public void deleteDirectoryByPath(@RequestParam(value = "path") String path) {
-        String url = serverManager.getNextAvailableServerUrl();
+        //lock
+    	String lockKey = path;
+    	String identity = "deltetLock";
+    	boolean lockSuccess = lockManager.getLock(lockKey, identity, 60);
+    	 
+    	if (lockSuccess) {
+    	String url = serverManager.getNextAvailableServerUrl();
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(url + "/dirs?path=" + path);
+        //release lock
+        boolean releaseSuccess = (boolean) lockManager.unlock(lockKey, identity);
+    	 }
     }
 
     /**
