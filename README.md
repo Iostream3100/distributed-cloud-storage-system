@@ -3,6 +3,8 @@
 ### Project Name: Distributed Cloud Storage System
 ### Team Members: Jialun Chen, Meiqing Pan, Yun Feng
 
+[Project Demo](https://drive.google.com/file/d/1Pz4WmKr715FR07fCpDUafpSxbnJHDEx7/view?usp=sharing)
+
 ## 1. Summary description of the project use case
 
 Our team will design a distributed storage system like Google Drive or Dropbox with a terminal client interface. Feature expectations are listed below:
