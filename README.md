@@ -1,4 +1,4 @@
-# Distributed Storage System
+# Distributed Cloud Storage System
 
 ### Team Members: Jialun Chen, Meiqing Pan, Yun Feng
 
