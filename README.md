@@ -1,6 +1,5 @@
-# CS6650-distributed-cloud-storage-system
+# Distributed Storage System
 
-### Project Name: Distributed Cloud Storage System
 ### Team Members: Jialun Chen, Meiqing Pan, Yun Feng
 
 [Project Demo](https://drive.google.com/file/d/1Pz4WmKr715FR07fCpDUafpSxbnJHDEx7/view?usp=sharing)
